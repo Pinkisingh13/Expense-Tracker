@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
       theme: PAppTheme.lightTheme,
       darkTheme: PAppTheme.lightTheme,
-    home: Scaffold(),
+    home: const Scaffold(),
     );
   }
 }
