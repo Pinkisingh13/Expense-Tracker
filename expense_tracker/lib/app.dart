@@ -1,3 +1,5 @@
+
+import 'package:expense_tracker/features/authentication/screens/welcome/welcome.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
 import 'package:expense_tracker/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: PAppTheme.lightTheme,
-      darkTheme: PAppTheme.lightTheme,
-    home: const Scaffold(),
+      darkTheme: PAppTheme.darkTheme,
+    home: const WelcomeScreen(),
     );
   }
 }

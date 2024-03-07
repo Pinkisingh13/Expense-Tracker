@@ -73,6 +73,7 @@ flutter:
     - assets/images/content/   
     - assets/logos/ 
     - assets/icons/
+    - assets/images/onboarding/sammy-line-searching.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

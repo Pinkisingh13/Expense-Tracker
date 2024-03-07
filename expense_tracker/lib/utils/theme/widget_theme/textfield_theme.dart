@@ -16,6 +16,7 @@ class PTextFormFieldTheme {
     hintStyle: const TextStyle().copyWith(fontSize: PSizes.fontSizeSm, color: PColors.black),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle: const TextStyle().copyWith(color: PColors.black.withOpacity(0.8)),
+
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(PSizes.inputFieldRadius),
       borderSide: const BorderSide(width: 1, color: PColors.grey),
@@ -48,6 +49,7 @@ class PTextFormFieldTheme {
     labelStyle: const TextStyle().copyWith(fontSize: PSizes.fontSizeMd, color: PColors.white),
     hintStyle: const TextStyle().copyWith(fontSize: PSizes.fontSizeSm, color: PColors.white),
     floatingLabelStyle: const TextStyle().copyWith(color: PColors.white.withOpacity(0.8),),
+
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(PSizes.inputFieldRadius),
       borderSide: const BorderSide(width: 1, color: PColors.darkGrey),

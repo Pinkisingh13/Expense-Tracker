@@ -29,4 +29,7 @@ class PImages {
   static const String login = "assets/images/onboarding/login.png";
   static const String signup = "assets/images/onboarding/signup.png";
   static const String welcome = "assets/images/onboarding/welcome.png";
+  static const String gif = "assets/images/onboarding/sammy-line-searching.gif";
+
+
 }
