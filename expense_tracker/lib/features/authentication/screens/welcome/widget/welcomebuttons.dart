@@ -1,4 +1,5 @@
 import 'package:expense_tracker/common/styles/spacing_style.dart';
+import 'package:expense_tracker/features/authentication/screens/login/login.dart';
 import 'package:expense_tracker/features/authentication/screens/signup/signup.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
@@ -31,7 +32,9 @@ class WelcomeButtons extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const LoginScreen());
+              },
               child: const Text(PTexts.loginTitle),
             ),
           ),

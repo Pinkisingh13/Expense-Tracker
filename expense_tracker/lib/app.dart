@@ -1,8 +1,7 @@
-
+import 'package:flutter/material.dart';
 import 'package:expense_tracker/features/authentication/screens/welcome/welcome.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
 import 'package:expense_tracker/utils/theme/theme.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MyApp extends StatelessWidget {

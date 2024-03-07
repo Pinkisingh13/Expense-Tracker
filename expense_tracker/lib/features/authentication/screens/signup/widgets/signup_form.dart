@@ -16,48 +16,26 @@ class SignupForm extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-          Row(
-            children: [
-              /// -- First Name --
-              Expanded(
-                child: TextFormField(
-                  // validator: (value) =>
-                  //     TValidator.validateEmptyText('first name', value),
-                  // controller: controller.firstName,
-                  expands: false,
-                  decoration: const InputDecoration(
-                    labelText: PTexts.firstName,
-                    prefixIcon: Icon(
-                      Iconsax.user,
-                      size: 19,
-                    ),
-                  ),
-                ),
-              ),
 
-              /// -- Last Name --
-              const SizedBox(
-                width: PSizes.spaceBtwInputFields,
+          /// -- First Name --
+          TextFormField(
+            // validator: (value) =>
+            //     TValidator.validateEmptyText('first name', value),
+            // controller: controller.firstName,
+            expands: false,
+            decoration: const InputDecoration(
+              labelText: PTexts.firstName,
+              prefixIcon: Icon(
+                Iconsax.user,
+                size: 19,
               ),
-              Expanded(
-                child: TextFormField(
-                  // controller: controller.lastName,
-                  // validator: (value) =>
-                  //     PValidator.validateEmptyText('last name', value),
-                  expands: false,
-                  decoration: const InputDecoration(
-                    labelText: PTexts.lastName,
-                    prefixIcon: Icon(Iconsax.user, size: 19),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
           const SizedBox(
             height: PSizes.spaceBtwInputFields,
           ),
 
-          /// -- Username --
+          /// -- Lastname --
           TextFormField(
             // controller: controller.userName,
             // validator: (value) =>
@@ -65,7 +43,7 @@ class SignupForm extends StatelessWidget {
             //         'username', value),
             expands: false,
             decoration: const InputDecoration(
-              labelText: PTexts.username,
+              labelText: PTexts.lastName,
               prefixIcon: Icon(Iconsax.user_edit, size: 19),
             ),
           ),
@@ -73,7 +51,7 @@ class SignupForm extends StatelessWidget {
             height: PSizes.spaceBtwInputFields,
           ),
 
-          //  -- Email --
+          ///  -- Email --
           TextFormField(
             // validator: (value) =>
             //     TValidator.validateEmail(value),
@@ -87,7 +65,7 @@ class SignupForm extends StatelessWidget {
             height: PSizes.spaceBtwInputFields,
           ),
 
-          // -- Phone Number --
+          /// -- Phone Number --
           TextFormField(
             // controller: controller.phoneNumber,
             // validator: (value) =>
@@ -101,7 +79,7 @@ class SignupForm extends StatelessWidget {
             height: PSizes.spaceBtwInputFields,
           ),
 
-          // -- Password --
+          /// -- Password --
           TextFormField(
             // controller: controller.password,
             // validator: (value) =>
@@ -124,7 +102,7 @@ class SignupForm extends StatelessWidget {
             ),
           ),
 
-          //  -- Sign up Button --
+          ///  -- Sign up Button --
           const SizedBox(
             height: PSizes.spaceBtwSections,
           ),
@@ -142,7 +120,7 @@ class SignupForm extends StatelessWidget {
           const SizedBox(
             height: PSizes.spaceBtwSections,
           ),
-          const PFormDivider(),
+          const PFormDivider(dividerTitle: PTexts.orSignUpWith,),
 
           /// -- Social Buttons --
           const SizedBox(

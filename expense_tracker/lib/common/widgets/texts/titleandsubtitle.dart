@@ -11,40 +11,62 @@ class TextTitleAndSloganWidget extends StatelessWidget {
     this.image = PImages.gif,
     required this.setImage,
     required this.isAlign,
+    this.onPressed,
+    required this.setFunc,
   });
 
   final String title, subtitle, image;
-  final bool setImage;
-  final bool isAlign;
+  final bool setImage, isAlign, setFunc;
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment:
-          isAlign ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        const SizedBox(
-          height: PSizes.sm,
-        ),
-        Text(
-          subtitle,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        const SizedBox(
-          height: PSizes.spaceBtwItems,
-        ),
-        setImage
-            ? Image.asset(
-                image,
-                fit: BoxFit.contain,
-                width: PHelperFunctions.screenWidth(),
-                height: PHelperFunctions.screenHeight() / 2.40,
+        setFunc
+            ? IconButton(
+                onPressed: onPressed,
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 20,
+                ),
               )
             : const SizedBox(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: PSizes.defaultSpace),
+            child: Column(
+              crossAxisAlignment:
+                  isAlign ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                const SizedBox(
+                  height: PSizes.sm,
+                ),
+                Text(
+                  subtitle,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                const SizedBox(
+                  height: PSizes.spaceBtwItems,
+                ),
+                setImage
+                    ? Image.asset(
+                        image,
+                        fit: BoxFit.contain,
+                        width: PHelperFunctions.screenWidth(),
+                        height: PHelperFunctions.screenHeight() / 2.40,
+                      )
+                    : const SizedBox(),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }

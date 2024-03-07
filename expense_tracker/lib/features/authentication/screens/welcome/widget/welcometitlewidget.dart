@@ -22,6 +22,7 @@ class WelcomeTitleWidget extends StatelessWidget {
         heightFactor: 1.2,
         widthFactor: double.infinity,
         child: TextTitleAndSloganWidget(
+          setFunc: false,
           isAlign: false,
           subtitle: PTexts.appsubTitle,
           title: PTexts.appName,
