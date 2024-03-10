@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:expense_tracker/common/styles/spacing_style.dart';
 import 'package:expense_tracker/features/authentication/screens/login/login.dart';
 import 'package:expense_tracker/features/authentication/screens/signup/signup.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class WelcomeButtons extends StatelessWidget {
   const WelcomeButtons({

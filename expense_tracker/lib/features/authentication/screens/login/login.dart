@@ -7,7 +7,6 @@ import 'package:expense_tracker/utils/constants/text_string.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
@@ -20,7 +19,6 @@ class LoginScreen extends StatelessWidget {
             padding: const EdgeInsets.all(PSizes.defaultSpace),
             child: Column(
               children: [
-
                 /// Icon, Title & SubTitle
                 TextTitleAndSloganWidget(
                   isAlign: true,
@@ -31,14 +29,12 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () => Get.back(),
                 ),
                 const SizedBox(
-                  height: PSizes.spaceBtwSections,
-                ),
-                const SizedBox(
-                  height: PSizes.spaceBtwSections,
+                  height: PSizes.spaceBtwSections*2,
                 ),
 
+
                 /// Form
-                const LoginForm(),
+                const PLoginForm(),
 
                 /// Divider
                 const SizedBox(
@@ -61,4 +57,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-

@@ -1,8 +1,8 @@
+import 'package:expense_tracker/features/authentication/screens/signup/verify_email.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/common/widgets/login_signup/form_buttons.dart';
-import 'package:expense_tracker/common/widgets/login_signup/form_divider.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
+import 'package:get/get.dart';
 
 import 'package:iconsax/iconsax.dart';
 
@@ -16,7 +16,6 @@ class SignupForm extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-
           /// -- First Name --
           TextFormField(
             // validator: (value) =>
@@ -109,24 +108,10 @@ class SignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                // controller.signup();
-              },
+              onPressed: () => Get.to(()=> const VerifyEmailScreen()),
               child: const Text(PTexts.createAccount),
             ),
           ),
-
-          /// -- Divider --
-          const SizedBox(
-            height: PSizes.spaceBtwSections,
-          ),
-          const PFormDivider(dividerTitle: PTexts.orSignUpWith,),
-
-          /// -- Social Buttons --
-          const SizedBox(
-            height: PSizes.spaceBtwSections,
-          ),
-          const PSocialButtons(),
         ],
       ),
     );

@@ -1,5 +1,3 @@
-
-
 class PImages {
   static const String darkAppLogo = "assets/logos/dark.png";
   static const String lightAppLogo = "assets/logos/light.png";
@@ -32,4 +30,7 @@ class PImages {
   static const String gif = "assets/images/onboarding/sammy-line-searching.gif";
 
 
+  /// Verify Email
+    static const String deliveredEmailIllustration =
+      "assets/images/animation/sammy-line-man-receives-a-mail.png";
 }

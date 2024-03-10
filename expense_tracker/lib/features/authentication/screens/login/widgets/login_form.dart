@@ -1,11 +1,14 @@
+import 'package:expense_tracker/features/authentication/screens/password_configuration/forget_password.dart';
+import 'package:expense_tracker/navigation_menu.dart';
 import 'package:expense_tracker/utils/constants/colors.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
+class PLoginForm extends StatelessWidget {
+  const PLoginForm({
     super.key,
   });
 
@@ -14,7 +17,7 @@ class LoginForm extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-          /// Email Id
+          ///  -- EmailId --
           TextFormField(
             // validator: (value) =>
             //     TValidator.validateEmptyText('first name', value),
@@ -31,8 +34,8 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: PSizes.spaceBtwInputFields,
           ),
-    
-          /// Password
+
+          /// -- Password --
           TextFormField(
             // validator: (value) =>
             //     TValidator.validateEmptyText('first name', value),
@@ -57,20 +60,25 @@ class LoginForm extends StatelessWidget {
               ),
             ),
           ),
-    
-          /// Forgot password
+
+          /// -- Forgot password -- 
           const SizedBox(
-            height: PSizes.spaceBtwSections,
+            height: PSizes.spaceBtwItems,
           ),
-          Text(
-            PTexts.forgetPassword,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: PColors.primary),
+          TextButton(
+            onPressed: () {
+              Get.to(() => const ForgetPassword());
+            },
+            child: Text(
+              PTexts.forgetPassword,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: PColors.primary),
+            ),
           ),
-    
-          /// Login Buttons
+
+          /// -- Login Button --
           const SizedBox(
             height: PSizes.spaceBtwSections,
           ),
@@ -79,6 +87,7 @@ class LoginForm extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 // controller.signup();
+                Get.to(()=> const NavigationMenu());
               },
               child: const Text(PTexts.loginTitle),
             ),

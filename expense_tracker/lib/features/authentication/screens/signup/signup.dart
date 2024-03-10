@@ -1,3 +1,5 @@
+import 'package:expense_tracker/common/widgets/login_signup/form_buttons.dart';
+import 'package:expense_tracker/common/widgets/login_signup/form_divider.dart';
 import 'package:expense_tracker/common/widgets/texts/titleandsubtitle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,15 +12,15 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       // backgroundColor: PColors.primary,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(PSizes.defaultSpace),
             child: Column(
-              children: [ 
-                /// -- Title & SubTitle --
+              children: [
+                /// -- Icon, Title & SubTitle --
                 TextTitleAndSloganWidget(
                   isAlign: true,
                   setFunc: true,
@@ -33,6 +35,20 @@ class SignupScreen extends StatelessWidget {
 
                 // -- Form ---
                 const SignupForm(),
+
+                /// -- Divider --
+                const SizedBox(
+                  height: PSizes.spaceBtwSections,
+                ),
+                const PFormDivider(
+                  dividerTitle: PTexts.orSignUpWith,
+                ),
+
+                /// -- Social Buttons --
+                const SizedBox(
+                  height: PSizes.spaceBtwSections,
+                ),
+                const PSocialButtons(),
               ],
             ),
           ),
