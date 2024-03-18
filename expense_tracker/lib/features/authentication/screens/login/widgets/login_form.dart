@@ -1,10 +1,13 @@
+import 'package:expense_tracker/features/authentication/controllers/login/login_controller.dart';
 import 'package:expense_tracker/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:expense_tracker/navigation_menu.dart';
 import 'package:expense_tracker/utils/constants/colors.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
+import 'package:expense_tracker/utils/validators/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 class PLoginForm extends StatelessWidget {
@@ -14,14 +17,15 @@ class PLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginKey,
       child: Column(
         children: [
           ///  -- EmailId --
           TextFormField(
-            // validator: (value) =>
-            //     TValidator.validateEmptyText('first name', value),
-            // controller: controller.firstName,
+            validator: (value) => PValidator.validateEmail(value),
+            controller: controller.email,
             expands: false,
             decoration: const InputDecoration(
               labelText: PTexts.email,
@@ -36,32 +40,34 @@ class PLoginForm extends StatelessWidget {
           ),
 
           /// -- Password --
-          TextFormField(
-            // validator: (value) =>
-            //     TValidator.validateEmptyText('first name', value),
-            // controller: controller.firstName,
-            expands: false,
-            decoration: InputDecoration(
-              labelText: PTexts.password,
-              prefixIcon: const Icon(
-                Iconsax.user,
-                size: 19,
-              ),
-              suffixIcon: IconButton(
-                onPressed: () {},
-                // controller.togglePassword.value =
-                //     !controller.togglePassword.value,
-                icon: const Icon(
-                  // controller.togglePassword.value
-                  //     ? Iconsax.eye_slash
-                  //     : Iconsax.eye,
-                  Iconsax.eye,
+          Obx(
+            () => TextFormField(
+              validator: (value) => PValidator.validatePassword(value),
+              controller: controller.password,
+              expands: false,
+              obscureText: controller.togglePassword.value,
+              decoration: InputDecoration(
+                labelText: PTexts.password,
+                prefixIcon: const Icon(
+                  Iconsax.user,
+                  size: 19,
+                ),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    controller.togglePassword.value =
+                        !controller.togglePassword.value;
+                  },
+                  icon: Icon(
+                    controller.togglePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
+                  ),
                 ),
               ),
             ),
           ),
 
-          /// -- Forgot password -- 
+          /// -- Forgot password --
           const SizedBox(
             height: PSizes.spaceBtwItems,
           ),
@@ -86,8 +92,7 @@ class PLoginForm extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                // controller.signup();
-                Get.to(()=> const NavigationMenu());
+                controller.login();          
               },
               child: const Text(PTexts.loginTitle),
             ),

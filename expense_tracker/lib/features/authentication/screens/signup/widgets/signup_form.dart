@@ -1,8 +1,11 @@
-import 'package:expense_tracker/features/authentication/screens/signup/verify_email.dart';
+import 'package:expense_tracker/features/authentication/controllers/signup/singup_controller.dart';
+
+import 'package:expense_tracker/utils/validators/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
 import 'package:get/get.dart';
+
 
 import 'package:iconsax/iconsax.dart';
 
@@ -13,14 +16,16 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SignUpController controller = Get.put(SignUpController());
     return Form(
+      key: controller.signupKey,
       child: Column(
         children: [
           /// -- First Name --
           TextFormField(
-            // validator: (value) =>
-            //     TValidator.validateEmptyText('first name', value),
-            // controller: controller.firstName,
+            controller: controller.firstName,
+            validator: (value) =>
+                PValidator.validateEmptyText('firstname', value),
             expands: false,
             decoration: const InputDecoration(
               labelText: PTexts.firstName,
@@ -36,10 +41,9 @@ class SignupForm extends StatelessWidget {
 
           /// -- Lastname --
           TextFormField(
-            // controller: controller.userName,
-            // validator: (value) =>
-            //     PValidator.validateEmptyText(
-            //         'username', value),
+            controller: controller.lastName,
+            validator: (value) =>
+                PValidator.validateEmptyText('Lastname', value),
             expands: false,
             decoration: const InputDecoration(
               labelText: PTexts.lastName,
@@ -52,9 +56,8 @@ class SignupForm extends StatelessWidget {
 
           ///  -- Email --
           TextFormField(
-            // validator: (value) =>
-            //     TValidator.validateEmail(value),
-            // controller: controller.email,
+            validator: (value) => PValidator.validateEmail(value),
+            controller: controller.email,
             decoration: const InputDecoration(
               labelText: PTexts.email,
               prefixIcon: Icon(Iconsax.direct, size: 19),
@@ -66,12 +69,12 @@ class SignupForm extends StatelessWidget {
 
           /// -- Phone Number --
           TextFormField(
-            // controller: controller.phoneNumber,
-            // validator: (value) =>
-            //     PValidator.validatePhoneNumber(value),
+            controller: controller.phoneNum,
+            validator: (value) => PValidator.validatePhoneNumber(value),
             decoration: const InputDecoration(
               labelText: PTexts.phoneNo,
-              prefixIcon: Icon(Iconsax.call, size: 19),
+              prefixIcon: Icon(Iconsax.call, size: 19,
+              ),
             ),
           ),
           const SizedBox(
@@ -79,23 +82,25 @@ class SignupForm extends StatelessWidget {
           ),
 
           /// -- Password --
-          TextFormField(
-            // controller: controller.password,
-            // validator: (value) =>
-            //     TValidator.validatePassword(value),
-            // obscureText: controller.togglePassword.value,
-            decoration: InputDecoration(
-              labelText: PTexts.password,
-              prefixIcon: const Icon(Iconsax.password_check, size: 19),
-              suffixIcon: IconButton(
-                onPressed: () {},
-                // controller.togglePassword.value =
-                //     !controller.togglePassword.value,
-                icon: const Icon(
-                  // controller.togglePassword.value
-                  //     ? Iconsax.eye_slash
-                  //     : Iconsax.eye,
-                  Iconsax.eye,
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: (value) => PValidator.validatePassword(value),
+              obscureText: controller.togglePassword.value,
+              decoration: InputDecoration(
+                labelText: PTexts.password,
+                prefixIcon: const Icon(Iconsax.password_check, size: 19),
+                
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    controller.togglePassword.value =
+                        !controller.togglePassword.value;
+                  },
+                  icon: Icon(
+                    controller.togglePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
+                  ),
                 ),
               ),
             ),
@@ -108,7 +113,8 @@ class SignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => Get.to(()=> const VerifyEmailScreen()),
+              // onPressed: () => Get.to(() => const VerifyEmailScreen()),
+              onPressed: () => controller.signup(),
               child: const Text(PTexts.createAccount),
             ),
           ),

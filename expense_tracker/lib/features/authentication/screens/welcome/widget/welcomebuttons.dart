@@ -5,6 +5,7 @@ import 'package:expense_tracker/features/authentication/screens/login/login.dart
 import 'package:expense_tracker/features/authentication/screens/signup/signup.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
+import 'package:get_storage/get_storage.dart';
 
 class WelcomeButtons extends StatelessWidget {
   const WelcomeButtons({
@@ -33,6 +34,8 @@ class WelcomeButtons extends StatelessWidget {
             width: double.infinity,
             child: OutlinedButton(
               onPressed: () {
+                final storage = GetStorage();
+                storage.write('IsFirstTime', false);
                 Get.to(() => const LoginScreen());
               },
               child: const Text(PTexts.loginTitle),

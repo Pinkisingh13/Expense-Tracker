@@ -1,8 +1,16 @@
 class PValidator {
   // Empty Text Validation
-  static String? validateEmptyText( String? fieldName , String? value) {
+  static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
       return ' $fieldName is required.';
+    }
+    return null;
+  }
+
+  // Otp verified
+  static String? validateOtp(String? value) {
+    if (value == null || value.isEmpty || value.length != 6) {
+      return  "Otp is required";
     }
     return null;
   }

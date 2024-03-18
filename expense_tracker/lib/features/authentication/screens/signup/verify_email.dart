@@ -1,12 +1,14 @@
-import 'package:expense_tracker/common/widgets/success_screen/success_screen.dart';
-import 'package:expense_tracker/features/authentication/screens/login/login.dart';
+import 'package:expense_tracker/features/authentication/controllers/signup/verifyemail_controller.dart';
+import 'package:expense_tracker/utils/constants/colors.dart';
+import 'package:expense_tracker/utils/validators/validators.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:expense_tracker/utils/constants/image_string.dart';
 import 'package:expense_tracker/utils/constants/sizes.dart';
 import 'package:expense_tracker/utils/constants/text_string.dart';
 import 'package:expense_tracker/utils/helpers/helper_function.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:pinput/pinput.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key, this.email});
@@ -14,14 +16,15 @@ class VerifyEmailScreen extends StatelessWidget {
   final String? email;
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(VerifyEmailController());
+    final controller = Get.put(VerifyEmailController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(()=> const LoginScreen()),
+            // onPressed: () => Get.offAll(() => const LoginScreen()),
             // onPressed: () => AuthenticationRepository.instance.logout(),
+            onPressed: () {},
             icon: const Icon(CupertinoIcons.clear),
           ),
         ],
@@ -48,23 +51,48 @@ class VerifyEmailScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: PSizes.spaceBtwItems,
-              ),
-              Text(
-                email ?? 'web.pinkisingh@gmail.com',
-                style: Theme.of(context).textTheme.labelLarge,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: PSizes.spaceBtwItems,
-              ),
-              Text(
-                PTexts.confirmEmailSubTitle,
-                style: Theme.of(context).textTheme.labelMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
                 height: PSizes.spaceBtwSections,
+              ),
+
+              /// Otp Fields
+              Form(
+                key: controller.otpkey,
+                child: Pinput(
+                  validator: (value) => 
+                    PValidator.validateOtp(value),                 
+                  length: 6,
+                  controller: controller.otp,
+                  defaultPinTheme: PinTheme(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: PColors.darkGrey),
+                    ),
+                  ),
+                  // controller: ,
+                  animationDuration: const Duration(milliseconds: 500),
+                  autofocus: true,
+                  enableSuggestions: true,
+
+                  errorBuilder: (errorText, pin) {
+                    return const GetSnackBar(
+                      message: "Please enter Correct Otp.",
+                    );
+                  },
+                  keyboardType: TextInputType.number,
+                  closeKeyboardWhenCompleted: true,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  useNativeKeyboard: true,
+                  followingPinTheme: const PinTheme(
+                    decoration: BoxDecoration(color: PColors.softGrey),
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+              ),
+
+              const SizedBox(
+                height: PSizes.spaceBtwSections * 2,
               ),
 
               ///Buttons
@@ -72,31 +100,13 @@ class VerifyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // controller.checkEmailVerificationStatus();
-                    Get.to(
-                      () => SuccessScreen(
-                        image: PImages.checkRegisterAnimation,
-                        title: PTexts.confirmEmail,
-                        subTitle: PTexts.confirmEmailSubTitle,
-                        onPressed: () {
-                          Get.offAll(() => const LoginScreen());
-                        },
-                      ),
-                    );
+                    controller.checkEmailVerificationStatus();
                   },
                   child: const Text(PTexts.tContinue),
                 ),
               ),
               const SizedBox(
                 height: PSizes.spaceBtwItems,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () {},
-                  // onPressed: () => controller.sendEmailVerification(),
-                  child: const Text(PTexts.resendEmail),
-                ),
               ),
             ],
           ),

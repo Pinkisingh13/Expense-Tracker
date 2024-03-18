@@ -1,3 +1,4 @@
+import 'package:expense_tracker/features/shop/screens/home/home.dart';
 import 'package:expense_tracker/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -83,9 +84,7 @@ class NavigationController extends GetxController {
   final RxInt selectedIndex = 0.obs;
 
   final screens = [
-    Container(
-      color: Colors.green,
-    ),
+  const HomeScreen(),
     Container(color: Colors.red),
     Container(
       color: Colors.yellow,
@@ -96,31 +95,3 @@ class NavigationController extends GetxController {
   ];
 }
 
-// BottomAppBar(
-        
-//         notchMargin: 5.0,
-//         shape: const CircularNotchedRectangle(),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceAround,
-//           children: [
-//             IconButton(
-//               onPressed: () {
-
-//               },
-//               icon: const Icon(Iconsax.home),
-//             ),
-//             IconButton(
-//               onPressed: () {},
-              // icon: const Icon(Iconsax.notification),
-//             ),
-//             IconButton(
-              // icon: const Icon(Iconsax.receipt),
-//               onPressed: () {},
-//             ),
-//             IconButton(
-//               onPressed: () {},
-//               icon: const Icon(Iconsax.user),
-//             ),
-//           ],
-//         ),
-//       ),

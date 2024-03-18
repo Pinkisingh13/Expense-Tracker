@@ -7,6 +7,10 @@ class PImages {
   static const String facebook = "assets/logos/facebook-icon.png";
 
   //  -- Lottie Animation --
+
+    static String docerAnimation =
+      "assets/images/animation/141594-animation-of-docer.json";
+      
   static String processingAnimation =
       "assets/images/animation/processing_animation.json";
 

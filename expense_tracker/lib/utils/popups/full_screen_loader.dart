@@ -1,3 +1,4 @@
+import 'package:expense_tracker/common/widgets/loaders/animation_loader.dart';
 import 'package:expense_tracker/utils/constants/colors.dart';
 import 'package:expense_tracker/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +24,12 @@ class TFullScreenLoader {
               : PColors.white,
           width: double.infinity,
           height: double.infinity,
-          child: const Column(
+          child: Column(
             children: [
-               SizedBox(
+               const SizedBox(
                 height: 250,
               ),
-              // PAnimationLoaderWidget(text: text, animation: animation),
+              PAnimationLoaderWidget(text: text, animation: animation),
             ],
           ),
         ),
